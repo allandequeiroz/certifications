@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+                <title>Assumptions</title>
+        </head>
+        <body>
+		<center>
+	                <h2>Name: Allan de Queiroz</h2>
+	                <h3>ID: SR2236422</h3>
+	        </center>
+                <h1>Assumptions</h1>
+                <ul>
+                        <li>I choosed not represent anything related to JMS in my diagrams to make it simple and clear.</li>
+                        <br />
+
+                        <li>To make model more flexible and extensible, is better to create an abstraction to derived oil items "Item".</li>
+                        <br />
+
+                        <li>Like Item, to increase flexibility and extensibility of model, I created the abstraction called "User".</li>
+                        <br />
+
+                        <li>Internationalization is impliced here, oil companies and buyers are in many places in the world so, to increase the understanding of functions like payment, i18n is a good thing.</li>
+                        <br />
+
+                        <li>To this scenario, I choosed simple JSP/Servlet mechanism instead frameworks like JSF because, is not necessary to maintain any state in this application, that's why I prefer an request based approach instead component based.</li>
+                        <br />
+
+                        <li>I used two distinct objects to represent purchases. Payment and Order, because there are two different moments, they are conceptual different, Payment will be used to receive de user data and forward it to merchant bank, just it, the details provided by user to transfer founds, will not be stored, just information about status, amout, time and order number will be persisted and this is the reason of creation of Order entity.</li>
+                        <br />
+
+                        <li>To make better the bid mechanism, I decide to use asynchronous calls to send bid informations.</li>
+                        <br />
+
+                        <li>When Gusher Oil employee select the winning bid, I decide to use e-mail server to notify the user, sending an message information about the winning, and the url where the payment can be done.</li>                        
+                </ul>
+                <a href="../index.html">Return to Index</a>
+        </body>
+</html>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.java.j2seproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
+            <name>1z0-805</name>
+            <source-roots>
+                <root id="src.11-24.02.2012.dir" name="11-24.02.2012"/>
+                <root id="src.dir" name="05-10.02.2012"/>
+            </source-roots>
+            <test-roots/>
+        </data>
+    </configuration>
+</project>

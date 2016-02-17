@@ -1,0 +1,25 @@
+
+Database server
+-How do increase in database queries-per-second affect the following?
+*Disk utilization
+*I/O Wait (percent of time the database waits due to network or disk operations)
+*RAM usage
+*CPU usage
+
+Web server
+-How do increases in web server requests-per-second affect the following?
+*Disk utilization
+*I/O Wait
+*RAM usage
+*CPU usage
+
+--
+
+*Disk throughput
+*Disk storage
+*CPU
+*RAM
+*Network
+
+DMZ
+Disaster Recovery

@@ -1,0 +1,124 @@
+
+*Business Delegate pattern to reduce the number of round trips between presentantion and business logic layer
+*Service Locator for cache any lookup for remote objects eliminating redundant lookups
+
+
+1) How does your design handle scalability?
+-Scalability by deploing in multiple servers or in multiple clusters if it's necessary.
+-Presentation and business tier deployed separately across separated servers enabling vertical and horizontal scaling.
+-Using only stateless session beans to make easy the load balancing across clusters.
+-Using connection pooling for any data base connections.
+-Using big memory cache to avoid direct connections with database.
+-Using web servers to serve just static content like, css, js and images.
+Scalability -> multiple servers, multiple clusters, tier deployed separately, vertical and horizontal scaling, stateless session beans, connection pooling, big memory, web servers
+
+
+
+
+2) How does your design handle performance?
+-Using switch load balancer with response-time or fist-available algorithm to decrease response time that aloways redirect incoming requests to the better option(server) when a request arrives.
+-Using connection pooling for any data base connections.
+-Using big memory cache to avoid database I/O.
+-Using Service Locator for cache any lookup for remote objects eliminating redundant lookups.
+-Using Business Delegate pattern to reduce the number of round trips between presentantion and business logic layer.
+performance -> switch load balancer with response-time or fist-available algorithm, connection pooling, big memory, Service Locator, Business Delegate
+
+
+
+
+3) How does your design handle availability?
+-The application is designed for high availability in this case we are using two web servers providing static content.
+-Using three applications servers where two serving requests and 1 for hot standby. 
+-Two nodes to provide big memory cache.
+-Three database servers where one of them is a hot standby.
+-Each server is an separated physical machine, because of this, at any given point of time we will have a server up and running all times even if one of the physical machines has issues.
+availability -> web servers providing static content, hot standby, Two nodes providing cache, separated physical machines.
+
+
+
+
+4) How does your design handle security?
+-Using HTTPS with SSL certificate to protect against 'main in the middle attacks' for all external connections.
+-Creating DMZ zones to protect tiers separately.
+-Enabling JMS Provider authentication and access control.
+-Providing JMS Queues and Topics protection, providing access just for privileged applications.
+-JMS Message-level and transport layer using encriptation, digital signatures and SSL.
+security -> HTTPS with SSL certificate, DMZ zones, JMS Provider authentication, privileged applications accessing JMS Queues and Topics, digital signatures and SSL for JMS Message-level and transport
+
+
+
+
+5) How does your design handle reliability?
+-This application was designed with reliability in mind, handling by the horizontal scalability and redundancy.
+-In case of one server go down, the response-time or fist-available load balancer will ensure the new requests will be routed to the hot standby server. 
+-We have an total of 2 hot standby servers, one for presentation/business layer and other to persistence layer, if one of this servers go down, hot standby can take his place.
+-Because of hot standby characteristics, data is mirrored in real time so in case of failure, hot standby server can take the place of the down server at the same time.
+reliability -> horizontal scalability and redundancy, hot standby servers, data is mirrored in real time in hot standby 
+
+
+
++-
+6) How does your design handle extensibility?
+-This application was designed with separation of concerns in mind for Presentation, Business and Data access layer.
+-Each layer is loosely coupled with each other with good usage of design patterns, interfaces and best practices of Object oriented design like, encapsulation, inheritance.
+-The design ensure that any change to sub system will have less impact on systems which are using it as long the interfaces continues the same. 
+-Even if there are changes, the impact will be minimal for adapting new changes.
+extensibility -> separation of concerns, layers loosely coupled, design patterns, interfaces, best practices of oo like, encapsulation, inheritance, less impact on changes.
+
+
++-
+7) How does your design handle manageability?
+-How we are using J2EE, we can use any JMX based tool for application and network management and monitoring. 
+-We can also have good logging mechanism to indicate any fatal or error conditions.
+-Using JMX we can also turn on different logging level at run time.
+manageability -> JMX based tool for application and network monitoring, logging mechanism, turn on different logging level with JMX.
+
+
+
+8) How does your design handle maintainability?
+-Each layer address a particular need and each one is loosely coupled because of best design practices.
+-Because of best desig practices, the undestanding of functionalities and any enhancement can be made easily.
+-This can also be supported with good documentation of the application(diagrams, interface agreements with external systems, class and sequence diagrams, javadoc) provided here.
+maintainability -> Modularity, each layer address a particular need, loosely coupled, best desig practices, enhancement of undestanding of functionalities, good documentation.
+
+
+
+Each of the below question also ask , "Why did you choose?"
+
+1) How does your design support session/state handling?
+How I decide to send by e-mail the informations about the winner bid and the url to the payment page, I choose don´t maitain any state between user requests, I did it to provide an better use of system resources.
+So, after win an auction, user receives an e-mail with the link to make the payment, if anything get wrong, the transaction will be rolled back and the user informed by mail and in the current screen, in this case, user will be informed how to proceed.
+session/state ->
+
+
+
+2) How does your design handle persistence?
+Using JPA and Entiry Beans, the access is through Data Access Object (DAO).
+persistence -> JPA and Entiry Beans, DAO
+
+
+
+3) How does your client tier talk to business tier?
+The presentation tier talk with business tier throught Business Delegate and Session Facade, in other workds Session Façade is used by Business Delegate when the client request access to business services.
+client/business/tier/talk -> Business Delegate and Session Facade
+
+
+
+4) How does your design handle Qos 3 Sec in peak time?
+To handle this goal I used an response-time or first-available switch load balancer to choose the better option every time, I put 2 web servers to provide excusevely static content and two clustered application servers to process users request. I used an big memory cache cluster to avoid database I/O, an gigabit full duplex connection between cache and application servers cluster was used to reduce the network I/O between this points.
+Qos/3/Sec ->
+
+
+
+5) How does your design handle transactions?
+Using CMT EJBs through JPA.
+transactions -> CMT EJBs through JPA.
+
+
+
+6) How does your design handle authentication and authorization? 
+For external users an form based authentication mechanism will be used, HTTPS with SSL certificate will be used to protect against 'main in the middle attacks'.
+For internal users (Gusher Oil employees) an internal LDAP based authentication mechanism will be used. In this case, uses can have many different roles and participate of many different groups.
+authentication/authorization -> form based, HTTPS with SSL certificate, LDAP based authentication, roles, groups
+
+

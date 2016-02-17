@@ -1,0 +1,31 @@
+TOP 3 TECHNICAL RISKS.
+Security : The mitigation strategies to avoid security risks is applied here are:
+-The creation of DMZ zones to protect tiers separately.
+-Using SSL certificate to protect against 'main in the middle attacks'.
+-Providing authentication and authorization mechanism.
+
+Performance : To avoid performance issues, the following were taken:
+-Use of the enterprise EhCache solution to improve application throughput and latency.
+-Using separated resources(web application servers) to provide static content to the users.
+-Using load balancing to distribute workload across servers.
+
+Availability : 
+-Avoinding single points of failure using multiple machines in cluster to process work.
+-Providing hot standby machines to assume the work in case of failure in one of the nodes.
+-We could to, create a similar infrastructure in another place to prevent, general power failures, natural disasters and etc.
+
+ASSUMPTIONS.
+http://www.coderanch.com/t/151738/java-Architect-SCEA/certification/assumptions
+
+1-I´ll not represent anything related to JMS in my diagrams to make it simple and clear.
+
+4-To make model more flexible and extensible, is better to create an abstraction to derivated oil items "Item".
+
+5-Like Item, to increase flexibility and extensibility of model, I´ll create and abstraction called "User".
+
+2-Internationalization is impliced here, oil companies and buyers are in many places in the world so, to increase the understanding of functions like payment, i18n is a good thing.
+
+3-To this scenario, I´ll chose simple JSP/Servlet mechanism instead frameworks like JSF because, is not necessary to maintain any state in this application, that´s why I prefer an request based aproach instead component based in this case.
+
+6-I´ll use two distinct objects to represent purchases. Payment and Order, because there are two different moments, they are conceptual different, Payment will be used to receive de user data and forward it to merchant bank, just it, the details provided by user to transfer founds, will not be stored, just information about status, amout, time and order number will be persisted and this is the reason of creation of Order entity.
+

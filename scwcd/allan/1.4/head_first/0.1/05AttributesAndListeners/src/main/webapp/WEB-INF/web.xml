@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<description>base</description>
+	
+	<context-param>
+		<param-name>Context param</param-name>
+		<param-value>the coxtent param value : context-param</param-value>
+	</context-param>
+	
+	<!-- Listeners -->
+	<listener>
+		<listener-class>
+			java4.fun.listener.ContextListener
+		</listener-class>	
+	</listener>
+	
+	<listener>
+		<listener-class>
+			java4.fun.listener.SessionAttributeListener
+		</listener-class>	
+	</listener>
+
+	<!-- Servlets -->	
+	<servlet>
+		<servlet-name>sessionAttribute</servlet-name>
+		<servlet-class>java4.fun.controller.SessionAttributeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>sessionAttribute</servlet-name>
+		<url-pattern>/sessionAttribute</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>defaultServlet</servlet-name>
+		<servlet-class>java4.fun.controller.DefaultServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>defaultServlet</servlet-name>
+		<url-pattern>/default.scwcd</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>paramReaderServlet</servlet-name>
+		<servlet-class>java4.fun.controller.ServletAndContextParamController</servlet-class>
+
+		<init-param>
+			<param-name>Init param</param-name>
+			<param-value>the init servlet param value : init-param</param-value>
+		</init-param>
+
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>paramReaderServlet</servlet-name>
+		<url-pattern>/param</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

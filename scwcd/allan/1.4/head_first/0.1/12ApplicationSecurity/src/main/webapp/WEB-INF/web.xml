@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<description>base</description>
+	
+	<servlet>
+		<servlet-name>admin</servlet-name>
+		<servlet-class>java4.fun.controller.AdminServlet</servlet-class>
+		<security-role-ref>
+			<role-name>Administrator</role-name>
+			<role-link>admin</role-link>
+		</security-role-ref>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>admin</servlet-name>
+		<url-pattern>/admin</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>member</servlet-name>
+		<servlet-class>java4.fun.controller.MemberServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>member</servlet-name>
+		<url-pattern>/member</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>guest</servlet-name>
+		<servlet-class>java4.fun.controller.GuestServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>guest</servlet-name>
+		<url-pattern>/guest</url-pattern>
+	</servlet-mapping>
+	
+	<!-- SECURITY -->
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name> requestToResources </web-resource-name>
+			
+			<url-pattern> /admin </url-pattern>
+			<url-pattern> /member </url-pattern>
+			<url-pattern> /guest </url-pattern>
+			
+			<http-method> GET </http-method>
+			<http-method> POST </http-method>			
+			
+		</web-resource-collection>
+		
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+		
+		<user-data-constraint>
+			<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+		
+	</security-constraint>
+	
+	<security-role>
+		<role-name>admin</role-name>
+		<role-name>member</role-name>
+		<role-name>guest</role-name>
+	</security-role>
+	
+	<login-config>
+		<auth-method> FORM </auth-method>
+		<form-login-config>
+			<form-login-page> /jsp/loginForm.jsp </form-login-page>
+			<form-error-page> /jsp/loginError.jsp </form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

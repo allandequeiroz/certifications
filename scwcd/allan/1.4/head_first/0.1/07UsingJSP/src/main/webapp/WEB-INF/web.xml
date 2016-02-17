@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<description>base</description>
+	
+	<servlet>
+		<servlet-name>defaultServlet</servlet-name>
+		<servlet-class>java4.fun.controller.DefaultServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>defaultServlet</servlet-name>
+		<url-pattern>/default.scwcd</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>defaultJSP</servlet-name>
+		<jsp-file>/jsp/default.jsp</jsp-file>
+		<init-param>
+			<param-name>email</param-name>
+			<param-value>allandequeiroz@gmail.com</param-value>
+		</init-param>
+	</servlet>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+</web-app>

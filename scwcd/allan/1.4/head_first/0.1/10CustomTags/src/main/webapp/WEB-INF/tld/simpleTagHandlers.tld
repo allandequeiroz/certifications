@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE taglib PUBLIC 
+"-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN" 
+"http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
+<taglib xmlns="http://java.sun.com/ns/j2ee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+version="2.0">
+
+<tlib-version> 0.1 </tlib-version>
+
+<uri> http://java4.fun/jsp/jstl/handler/simple </uri>
+	
+<short-name> simpleHandlers </short-name>
+
+<tag>
+	<description> Simple Handler </description>
+	<name> simple </name>
+	<tag-class> java4.fun.tag.SimpleTagHandler </tag-class>
+	<body-content> scriptless </body-content>
+	<attribute>
+		<name> url </name>
+		<required> true </required>
+		<rtexprvalue> true </rtexprvalue>
+	</attribute>
+	<attribute>
+		<name> user </name>
+		<required> true </required>
+		<rtexprvalue> true </rtexprvalue>
+	</attribute>
+	<attribute>
+		<name> publisher </name>
+		<required> false </required>
+		<rtexprvalue> true </rtexprvalue>
+	</attribute>
+</tag>
+
+</taglib>
